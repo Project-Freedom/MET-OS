@@ -1,0 +1,199 @@
+qubes-gui-daemon (4.1.13-1) unstable; urgency=medium
+
+  [ Demi Marie Obenour ]
+  * Move XInternAtom calls to startup
+  * Miscellaneous cleanups
+  * Avoid dangerous functions in shmoverride
+  * Remove @asyncio.coroutine
+  * Rip out @asyncio.coroutine
+  * Remove deprecated qrexec policy syntax
+  * Support clipboard outside of dom0
+
+  [ Marek Marczykowski-Górecki ]
+  * rpm: require qrexec new enough for policy.EvalSimple service
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Fri, 18 Jun 2021 05:44:25 +0200
+
+qubes-gui-daemon (4.1.12-1) unstable; urgency=medium
+
+  [ Demi Marie Obenour ]
+  * More protection vs override redirect windows
+  * Use --override-redirect=disabled
+  * Use the work area instead of root window size
+
+  [ Frédéric Pierret (fepitre) ]
+  * Add .gitlab-ci.yml
+
+  [ Marek Marczykowski-Górecki ]
+  * gitlab-ci: adjust install excludes
+  * Make the build detect BACKEND_VMM based on installed vchan version
+
+  [ Demi Marie Obenour ]
+  * Listen for property changes instead of polling
+  * Respond to code review from @marmarek
+  * Remove hard-coded magic numbers
+  * Use desktop_coordinates_size instead of a magic number
+  * Don’t crash if there is no window manager
+  * Miscellaneous hardening
+  * Replace /var/run with /run
+  * Check syscall return values
+  * Never pass an invalid X11 operation to dom0
+
+  [ Frédéric Pierret (fepitre) ]
+  * Enforce locale for help2man
+
+  [ Marek Marczykowski-Górecki ]
+  * Fix clipboard stop working after ~50 days of uptime
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Wed, 06 Jan 2021 21:44:44 +0100
+
+qubes-gui-daemon (4.1.11-1) unstable; urgency=medium
+
+  * Fix handling X11 exit
+  * xside: don't hang indefinitely if VM is killed early
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Fri, 13 Nov 2020 03:15:42 +0100
+
+qubes-gui-daemon (4.1.10-1) unstable; urgency=medium
+
+  [ John Hensley ]
+  * icon-receiver: exit on X connection error
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Fri, 18 Sep 2020 05:15:19 +0200
+
+qubes-gui-daemon (4.1.9-1) unstable; urgency=medium
+
+  [ Frédéric Pierret (fepitre) ]
+  * Update travis
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Mon, 31 Aug 2020 04:20:14 +0200
+
+qubes-gui-daemon (4.1.8-1) unstable; urgency=medium
+
+  [ Paweł Marczewski ]
+  * Prevent VM notifications from appearing on top of xscreensaver
+  * Make screensaver detection configurable
+  * Handle destroyed windows in restack_windows
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Thu, 30 Jul 2020 05:01:47 +0200
+
+qubes-gui-daemon (4.1.7-1) unstable; urgency=medium
+
+  [ Marek Marczykowski-Górecki ]
+  * shmoverride: fill shm_perm when faking shmctl(IPC_STAT) output
+  * Update dependencies for icon receiver
+
+  [ Dmitry Fedorov ]
+  * audio: register vchan' callbacks when stream in PA_STREAM_READY
+    state
+  * audio: fix indentation
+  * audio: quit if io_new() fails
+
+  [ Paweł Marczewski ]
+  * Allow overriding configuration file
+  * Remove audio_low_latency option (not used anymore)
+  * Add a warning to the configuration file
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Wed, 15 Jul 2020 13:50:45 +0200
+
+qubes-gui-daemon (4.1.6-1) unstable; urgency=medium
+
+  [ Ivan Kardykov ]
+  * set override redirect attribute on window creating
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Sun, 17 May 2020 12:37:45 +0200
+
+qubes-gui-daemon (4.1.5-1) unstable; urgency=medium
+
+  [ Frédéric Pierret (fepitre) ]
+  * gui-daemon: set qubes-keyboard only in dom0
+  * qubes-release: define it in xside.h
+
+  [ Paweł Marczewski ]
+  * shmoverride: handle Xorg crash leaving shm.id file
+  * Convert qubes.WindowIconUpdater to a socket service
+  * qubes.WindowIconUpdater: use wait-for-session
+  * Add dependencies for qubes.WindowIconUpdater
+  * icon-receiver: use logging
+  * icon-receiver: handle app.domains updates
+
+  [ M. Vefa Bicakci ]
+  * xside: Introduce override_redirect protection
+
+  [ Paweł Marczewski ]
+  * Support MSG_CURSOR
+  * Define supported protocol version
+
+  [ Marek Marczykowski-Górecki ]
+  * pulse: periodically check if vchan connection is alive
+  * pulse: create pidfile
+
+  [ Frédéric Pierret (fepitre) ]
+  * Currently disable failing builds for CentOS 7
+  * xside: drop related pulseaudio (done in qvm-start-daemon)
+  * spec: put audio part in subpackage
+
+  [ Marek Marczykowski-Górecki ]
+  * pulse: fix compiler warning
+  * rpm: pull in audio packages on dom0 upgrade
+  * pulse: replace dbus control with QubesDB + local socket
+  * pulse: add qrexec services to control audio-input in another VM
+  * rpm: use rpm-build provided CFLAGS for pacat-simple-vchan
+  * Update core-admin extension for new audio-input control mechanism
+  * rpm: require new enough qubes-core-dom0
+  * Revert "Currently disable failing builds for CentOS 7"
+  * travis: add CentOS 7
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Fri, 10 Apr 2020 05:56:54 +0200
+
+qubes-gui-daemon (4.1.4-1) unstable; urgency=medium
+
+  [ Frédéric Pierret (fepitre) ]
+  * travis: switch to dom0 Fedora 31
+
+  [ Marek Marczykowski-Górecki ]
+  * Make files in qubes-rpc executable
+  * Make qubes.WindowIconUpdater a proper script
+  * Fix tray icon coloring code - do not crop/dislocate icon fragments
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Sun, 15 Mar 2020 03:00:41 +0100
+
+qubes-gui-daemon (4.1.3-1) unstable; urgency=medium
+
+  [ xaki23 ]
+  * allow domid 0 as target
+
+  [ Frédéric Pierret (fepitre) ]
+  * travis: switch to bionic
+
+  [ Snowy Marmot ]
+  * Add exmaples/comments to guid.conf
+  * Review and fix spelling
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Sun, 05 Jan 2020 20:03:31 +0100
+
+qubes-gui-daemon (4.1.2-1) wheezy; urgency=medium
+
+  * Fix setting shmoverride.so localtion
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Sat, 20 Apr 2019 18:16:14 +0200
+
+qubes-gui-daemon (4.1.1-1) unstable; urgency=medium
+
+  [ Marek Marczykowski-Górecki ]
+  * xside: save agent protocol version
+
+  [ Your Name ]
+  * CLIPBOARD_DATA: fix sending of window id when pasting to messages.
+
+  [ Marek Marczykowski-Górecki ]
+  * xside: send old MSG_CLIPBOARD_DATA if agent is old
+  * rpm: use %{python3_pkgversion} to make it CentOS compatible
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Fri, 29 Mar 2019 01:00:07 +0100
+
+qubes-gui-daemon (4.1.0-1) unstable; urgency=medium
+
+  * Initial packaging
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Sat, 02 Mar 2019 14:57:16 +0100
