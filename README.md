@@ -1,4 +1,4 @@
-# METeams
+# MET OS
 ## Description
 This is an Unix-like operating system that can be customize by looking/reading the codes. It has two default GUIs (MacOS, Windows).
 ## GUIs
